@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>dnevnik-glass — демо-полигон</title>
+<style>
+  /* минимальная имитация лейаута оригинального сайта — чтобы мок выглядел правдоподобно */
+  body { margin: 0; font-family: -apple-system, 'Segoe UI', Roboto, sans-serif; }
+  .layout-base__header { padding: 14px 24px; }
+  .logotype__title { font-size: 18px; font-weight: 700; }
+  .logotype__subtitle { font-size: 12px; }
+  .menu0 { display: flex; gap: 4px; padding: 6px; margin: 10px 24px; }
+  .menu0-item { padding: 8px 16px; border-radius: 10px; }
+  .menu0-item__title { font-size: 14px; }
+  .navigation-tabs__inner { display: flex; gap: 4px; padding: 6px; margin: 10px 24px; width: fit-content; }
+  .navigation-tabs__item { padding: 6px 14px; font-size: 13px; }
+  .navigation-tabs__item.active { }
+  .dnevnik { max-width: 1100px; margin: 0 auto; padding: 10px 24px 40px; }
+  .dnevnik-day { margin-bottom: 18px; }
+  .dnevnik-day__header { padding: 12px 18px; }
+  .dnevnik-day__title { font-size: 16px; font-weight: 700; margin: 0; }
+  .dnevnik-lesson { display: flex; gap: 14px; align-items: baseline; padding: 10px 18px; border-top: 1px solid rgba(127,127,127,.15); }
+  .dnevnik-lesson__number { min-width: 90px; font-size: 12px; }
+  .dnevnik-lesson__subject { font-weight: 600; min-width: 180px; }
+  .dnevnik-lesson__task { font-size: 13px; flex: 1; }
+  .dnevnik-mark { padding: 2px 9px; font-size: 13px; font-weight: 700; }
+  .page-title { margin: 24px; font-size: 20px; }
+  .marks-wrap { margin: 0 24px 40px; }
+  .cells { display: grid; grid-template-columns: 220px repeat(10, 1fr) 70px; }
+  .cell { padding: 8px 10px; font-size: 13px; border: 1px solid rgba(127,127,127,.15); }
+  .cells_header .cell { font-weight: 700; }
+  .cell.istarget.red { font-weight: 700; }
+  .page { max-width: 900px; margin: 40px auto; }
+  .panel { padding: 24px; border-radius: 12px; margin-bottom: 16px; }
+  .links { display: flex; gap: 24px; padding: 24px; }
+  .copyright { padding: 24px; font-size: 12px; }
+  .demo-nav { position: sticky; top: 0; z-index: 100; background: rgba(0,0,0,.5); padding: 8px 24px; display: flex; gap: 12px; }
+  .demo-nav a { color: #fff; font-size: 13px; }
+</style>
+</head>
+<body>
+
+<div class="demo-nav">
+  <a href="#journal">📓 Дневник</a>
+  <a href="#grades">📊 Успеваемость</a>
+  <a href="#portal">🚪 Портал /elk</a>
+</div>
+
+<!-- ================= ДНЕВНИК ================= -->
+<div id="journal">
+  <div class="layout-base__header header">
+    <div class="logotype__title">Электронный дневник</div>
+    <div class="logotype__subtitle">город, район</div>
+  </div>
+  <div class="menu0">
+    <div class="menu0-item menu0-item--active"><span class="menu0-item__title">Дневник</span></div>
+    <div class="menu0-item"><span class="menu0-item__title">Успеваемость</span></div>
+    <div class="menu0-item"><span class="menu0-item__title">Планирование</span></div>
+    <div class="menu0-item"><span class="menu0-item__title">Кружки и секции</span></div>
+  </div>
+  <div class="navigation-tabs__inner">
+    <div class="navigation-tabs__item active">Дневник</div>
+    <div class="navigation-tabs__item">Пропущенные темы</div>
+    <div class="navigation-tabs__item">Домашние задания</div>
+    <div class="navigation-tabs__item">Посещаемость</div>
+  </div>
+  <div class="dnevnik">
+    <div class="dnevnik-day">
+      <div class="dnevnik-day__header"><h3 class="dnevnik-day__title">Понедельник, 16.11</h3></div>
+      <div class="dnevnik-lesson">
+        <span class="dnevnik-lesson__number dnevnik-lesson__number--time">1.<br>08:00–08:40</span>
+        <span class="dnevnik-lesson__subject">Разговоры о важном</span>
+        <span class="dnevnik-lesson__task"></span>
+        <span class="dnevnik-mark">Н</span>
+      </div>
+      <div class="dnevnik-lesson">
+        <span class="dnevnik-lesson__number dnevnik-lesson__number--time">2.<br>08:45–09:25</span>
+        <span class="dnevnik-lesson__subject">Химия</span>
+        <span class="dnevnik-lesson__task">работа с презентацией (см. прикр. файл)</span>
+        <span class="dnevnik-mark">Н</span>
+      </div>
+      <div class="dnevnik-lesson">
+        <span class="dnevnik-lesson__number dnevnik-lesson__number--time">3.<br>09:35–10:15</span>
+        <span class="dnevnik-lesson__subject">Иностранный язык (английский)</span>
+        <span class="dnevnik-lesson__task">подготовка к лексической работе по теме compound adjectives</span>
+        <span class="dnevnik-mark">Н</span>
+      </div>
+      <div class="dnevnik-lesson">
+        <span class="dnevnik-lesson__number dnevnik-lesson__number--time">7.<br>13:30–14:10</span>
+        <span class="dnevnik-lesson__subject">Физика</span>
+        <span class="dnevnik-lesson__task"></span>
+        <span class="dnevnik-mark">3</span>
+      </div>
+    </div>
+    <div class="dnevnik-day">
+      <div class="dnevnik-day__header"><h3 class="dnevnik-day__title">Среда, 18.11</h3></div>
+      <div class="dnevnik-lesson">
+        <span class="dnevnik-lesson__number dnevnik-lesson__number--time">1.<br>08:00–08:40</span>
+        <span class="dnevnik-lesson__subject">Геометрия</span>
+        <span class="dnevnik-lesson__task"></span>
+      </div>
+      <div class="dnevnik-lesson">
+        <span class="dnevnik-lesson__number dnevnik-lesson__number--time">5.<br>11:45–12:25</span>
+        <span class="dnevnik-lesson__subject">Физика</span>
+        <span class="dnevnik-lesson__task">§ 44, упр. 21</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ================= УСПЕВАЕМОСТЬ ================= -->
+<div id="grades">
+  <h1 class="page-title">Отметки из журнала · I полугодие</h1>
+  <div class="marks-wrap">
+    <div class="cells cells_marks cells_header">
+      <div class="cell">Предмет</div><div class="cell">2</div><div class="cell">3</div><div class="cell">4</div>
+      <div class="cell">5</div><div class="cell">Н</div><div class="cell"></div><div class="cell"></div>
+      <div class="cell"></div><div class="cell"></div><div class="cell"></div>
+      <div class="cell istarget red">Средняя</div>
+    </div>
+    <div class="cells cells_marks cells__hoverable">
+      <div class="cell cell_titled">Алгебра и НМА</div>
+      <div class="cell cell-data colors2">2</div><div class="cell cell-data colors3">3</div>
+      <div class="cell cell-data colors4">4</div><div class="cell cell-data colors5">5</div>
+      <div class="cell cell-data red">Н</div><div class="cell cell-data"></div><div class="cell cell-data"></div>
+      <div class="cell cell-data"></div><div class="cell cell-data"></div><div class="cell cell-data"></div>
+      <div class="cell cell-data">3.67</div>
+    </div>
+    <div class="cells cells_marks cells__hoverable">
+      <div class="cell cell_titled">Биология</div>
+      <div class="cell cell-data colors4">4</div><div class="cell cell-data colors5">5</div>
+      <div class="cell cell-data"></div><div class="cell cell-data"></div><div class="cell cell-data"></div>
+      <div class="cell cell-data"></div><div class="cell cell-data"></div><div class="cell cell-data"></div>
+      <div class="cell cell-data"></div><div class="cell cell-data"></div>
+      <div class="cell cell-data">4.50</div>
+    </div>
+    <div class="cells cells_marks cells__hoverable">
+      <div class="cell cell_titled">Информатика</div>
+      <div class="cell cell-data red">Н</div><div class="cell cell-data colors5">5</div>
+      <div class="cell cell-data"></div><div class="cell cell-data"></div><div class="cell cell-data"></div>
+      <div class="cell cell-data"></div><div class="cell cell-data"></div><div class="cell cell-data"></div>
+      <div class="cell cell-data"></div><div class="cell cell-data"></div>
+      <div class="cell cell-data cell_avg_not_enough">2.00</div>
+    </div>
+  </div>
+</div>
+
+<!-- ================= ПОРТАЛ /elk ================= -->
+<div id="portal">
+  <div class="page">
+    <div class="panel">
+      <div class="content" style="font-size:18px;font-weight:700;">Вход для обучающихся</div>
+      <div class="links">
+        <a href="#">Вход для родителей</a>
+        <a href="#">Вход для учителей</a>
+      </div>
+    </div>
+    <div class="copyright">© 2020–2026 Министерство образования и науки Нижегородской области</div>
+  </div>
+</div>
+
+<script src="../dnevnik-glass.user.js"></script>
+</body>
+</html>
